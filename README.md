@@ -106,9 +106,30 @@ WHERE customer_id = 'SHIRE' -->
 > There is more information about the COUNT clause on [W3 Schools](https://www.w3schools.com/sql/sql_count_avg_sum.asp)
 
 
+<!-- (didnt work for some reason but should?)
+SELECT o.order_id, c.contact_name COUNT(*)
+FROM orders o JOIN customers c
+WHERE o.customer_id = c.customer_id
+GROUP BY c.contact_name -->
+
+<!--This worked? 
+SELECT COUNT(o.order_id), c.company_name 
+FROM customers c
+JOIN orders o
+ON c.customer_id = o.customer_id
+GROUP BY c.company_name-->
+
 ### list customers names and the number of orders per customer. Sort the list by number of orders in descending order. _Save-a-lot Markets should be at the top with 31 orders followed by _Ernst Handle_ with 30 orders. Last should be _Centro comercial Moctezuma_ with 1 order.
 > This can be done by adding an ORDER BY clause to the previous answer
 
+<!--
+SELECT COUNT(o.order_id) as Orders, c.company_name as Customer
+FROM orders o
+JOIN customes c
+ON o.customer_id = c.customer_id
+GROUP BY Customer
+ORDER BY Orders DESC
+-->
 
 ### list orders grouped by customer's city showing number of orders per city. Returns 69 Records with _Aachen_ showing 6 orders and _Albuquerque_ showing 18 orders.
 > This is very similar to the previous two queries, however, it focuses on the City rather than the CustomerName
@@ -120,11 +141,11 @@ Note: This step does not use PostgreSQL!
 
 Take the following data and normalize it into a 3NF database.
 
-| Person Name | Pet Name | Pet Type | Pet Name 2 | Pet Type 2 | Pet Name 3 | Pet Type 3 | Fenced Yard | City Dweller |
+<!-- | Person Name | Pet Name | Pet Type | Pet Name 2 | Pet Type 2 | Pet Name 3 | Pet Type 3 | Fenced Yard | City Dweller |
 | ----------- | -------- | -------- | ---------- | ---------- | ---------- | ---------- | ----------- | ------------ |
 | Jane        | Ellie    | Dog      | Tiger      | Cat        | Toby       | Turtle     | No          | Yes          |
 | Bob         | Joe      | Horse    |            |            |            |            | No          | No           |
-| Sam         | Ginger   | Dog      | Miss Kitty | Cat        | Bubble     | Fish       | Yes         | No           |
+| Sam         | Ginger   | Dog      | Miss Kitty | Cat        | Bubble     | Fish       | Yes         | No           | -->
 
 ---
 ## Stretch Goals
